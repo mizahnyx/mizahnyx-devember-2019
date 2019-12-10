@@ -2,10 +2,16 @@ extends Node
 
 class_name GravityAttractor
 
-var gravity = 9.81
+export var gravity:float = 9.81
+export var radius:float = 20
+
+onready var gravity_controller = $'/root/Spatial'
+
+func _ready():
+	gravity_controller.register_attractor(self)
 
 # Called when the node enters the scene tree for the first time.
-func attract(gravity_body, delta):
+func attract(gravity_body):
 	var parent = self.get_parent()
 	var gravity_body_parent = gravity_body.get_parent()
 	
