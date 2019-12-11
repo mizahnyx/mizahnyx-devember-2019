@@ -68,30 +68,32 @@ material/0 = SubResource( 6 )
 script = ExtResource( 2 )
 radius = 200.0
 
-[node name="RigidBody" type="RigidBody" parent="."]
+[node name="Player" type="RigidBody" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 23.4376, 28.3096, 12.9284 )
 mode = 2
 physics_material_override = SubResource( 7 )
 script = ExtResource( 1 )
 
-[node name="CollisionShape" type="CollisionShape" parent="RigidBody"]
+[node name="CollisionShape" type="CollisionShape" parent="Player"]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
 shape = SubResource( 8 )
 
-[node name="MeshInstance" type="MeshInstance" parent="RigidBody"]
+[node name="MeshInstance" type="MeshInstance" parent="Player"]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
 mesh = SubResource( 9 )
 material/0 = null
 
-[node name="Camera" type="Camera" parent="RigidBody"]
+[node name="Camera" type="Camera" parent="Player"]
 transform = Transform( -1, -3.55271e-15, -3.25841e-07, -8.44878e-08, 0.965799, 0.259291, 3.14697e-07, 0.259291, -0.965799, 0, 3.18202, -5.58702 )
 
-[node name="ThirdPersonController" type="Node" parent="RigidBody"]
+[node name="ThirdPersonController" type="Node" parent="Player"]
 script = ExtResource( 3 )
 active = true
 ray_cast_path = "../RayCast"
 
-[node name="RayCast" type="RayCast" parent="RigidBody"]
+[node name="RayCast" type="RayCast" parent="Player"]
+enabled = true
+cast_to = Vector3( 0, -1.05, 0 )
 
 [node name="DebugLabel" type="Label" parent="."]
 margin_right = 435.0

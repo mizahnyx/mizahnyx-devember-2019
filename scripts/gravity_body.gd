@@ -20,8 +20,9 @@ func _integrate_forces(state:PhysicsDirectBodyState):
 		new_basis.z = old_basis.x.cross(gravity_direction)
 		
 		state.transform.basis = new_basis.orthonormalized()
-		if state.linear_velocity.length_squared() > (maximum_velocity * maximum_velocity):
-			state.linear_velocity = state.linear_velocity.normalized() * maximum_velocity
+		
+	if state.linear_velocity.length_squared() > (maximum_velocity * maximum_velocity):
+		state.linear_velocity = state.linear_velocity.normalized() * maximum_velocity
 
 
 func _ready():
